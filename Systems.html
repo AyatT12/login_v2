@@ -26,7 +26,7 @@
         body {
             font-family: 'Cairo';
             background: var(--bg);
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             position: relative;
@@ -296,7 +296,14 @@
             }
 
         }
-
+    @media (max-height:712px) {
+            .header {
+                    padding: 0px 20px;
+            }
+            .main-content{
+                padding: 0px 20px 5px;
+            }
+            }
     </style>
 </head>
 
