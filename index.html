@@ -24,7 +24,7 @@
         body {
             font-family: 'Cairo';
             background: var(--bg);
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             position: relative;
@@ -89,15 +89,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0px 20px 10px;
+            padding: 20px 20px 10px;
             position: relative;
             z-index: 5;
+            min-height: 0;
         }
 
         /* Login container */
         .login-container {
             border-radius: 20px;
-            padding: 50px 40px;
+            padding: 30px 40px;
             width: 100%;
             max-width: 450px;
             position: relative;
@@ -111,7 +112,7 @@
             color: #1A1A1A;
             font-size: 28px;
             font-weight: 600;
-            margin-bottom: 40px;
+            margin-bottom: 25px;
             position: relative;
         }
 
@@ -261,7 +262,7 @@
 
         .car {
             position: absolute;
-            bottom: -10px;
+            bottom: 0px;
             width: 75%;
             right: 25%;
             z-index: -1;
@@ -269,7 +270,7 @@
 
         .up {
             position: absolute;
-            top: -50px;
+            top: 0px;
             width: 50%;
             left: 0px;
             z-index: -1;
@@ -282,6 +283,35 @@
             width: 77.4%;
             right: 0;
             z-index: -2;
+        }
+
+        /* iPad specific fixes */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .header {
+                padding: 8px 40px;
+            }
+            
+            .login-container {
+                padding: 25px 35px;
+                max-width: 400px;
+            }
+            
+            .login-title {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            
+            .main-content {
+                padding: 15px 20px 10px;
+            }
+
+            .form-input {
+                padding: 10px;
+            }
+
+            .login-button {
+                padding: 14px 20px;
+            }
         }
 
         /* Responsive design */
@@ -379,12 +409,12 @@
 
         }
 
-        @media (max-height:712px) {
+        @media (max-height:700px) {
          .header {
                 padding: 0px 20px;
           }
           .login-container{
-            padding: 10px;
+            padding: 20px;
           }
           .login-title{
             margin-bottom: 5px;

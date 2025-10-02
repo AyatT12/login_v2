@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>الأنظمه</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="./images/Logo.svg" />
@@ -26,7 +26,7 @@
         body {
             font-family: 'Cairo';
             background: var(--bg);
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             position: relative;
@@ -103,9 +103,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 0px 20px 10px;
+            padding: 20px 20px 10px;
             position: relative;
             z-index: 5;
+            min-height: 0;
         }
 
         .systems-grid {
@@ -206,7 +207,7 @@
 
         .car {
             position: absolute;
-            bottom: -10px;
+            bottom: 0px;
             width: 75%;
             right: 25%;
             z-index: -1;
@@ -214,11 +215,10 @@
 
         .up {
             position: absolute;
-            top: -50px;
+            top: 0px;
             width: 50%;
             left: 0px;
             z-index: -1;
-
         }
 
         .down {
@@ -227,6 +227,17 @@
             width: 77.4%;
             right: 0;
             z-index: -2;
+        }
+
+        /* iPad specific fixes */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .header {
+                padding: 8px 40px;
+            }
+
+            .main-content {
+                padding: 15px 20px 10px;
+            }
         }
 
         /* Responsive design */
@@ -296,14 +307,15 @@
             }
 
         }
-    @media (max-height:712px) {
+
+        @media (max-height:700px) {
             .header {
-                    padding: 0px 20px;
+                padding: 0px 20px;
             }
             .main-content{
                 padding: 0px 20px 5px;
             }
-            }
+        }
     </style>
 </head>
 
