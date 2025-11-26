@@ -39,7 +39,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 40px 10px;
+            padding: 10px 40px;
             position: relative;
             z-index: 10;
         }
@@ -90,7 +90,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px 20px 10px;
+            padding: 5px 20px 5px;
             position: relative;
             z-index: 5;
             min-height: 0;
@@ -290,10 +290,6 @@
 
         /* iPad specific fixes */
         @media (min-width: 768px) and (max-width: 1024px) {
-            .header {
-                padding: 8px 40px;
-            }
-
             .login-container {
                 padding: 25px 35px;
                 max-width: 400px;
@@ -302,10 +298,6 @@
             .login-title {
                 font-size: 24px;
                 margin-bottom: 20px;
-            }
-
-            .main-content {
-                padding: 15px 20px 10px;
             }
 
             .form-input {
@@ -320,9 +312,7 @@
         /* Responsive design */
         @media (max-width: 768px) {
             .header {
-                padding: 15px 20px;
                 flex-direction: column;
-                gap: 15px;
             }
 
             .header .language-selector {
@@ -421,9 +411,6 @@
                 margin-bottom: 5px;
             }
 
-            .main-content {
-                padding: 0px 20px 5px;
-            }
         }
     </style>
 </head>
