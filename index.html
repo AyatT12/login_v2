@@ -153,6 +153,16 @@
             font-size: 14px;
         }
 
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px white inset !important;
+            box-shadow: 0 0 0 30px white inset !important;
+            -webkit-text-fill-color: #000 !important;
+        }
+
+
         /* Login button */
         .login-button {
             width: 100%;
@@ -349,9 +359,6 @@
         }
 
         @media (max-width: 480px) {
-            .main-content {
-                padding: 20px 10px;
-            }
 
             .login-container {
                 margin: 10px;
@@ -401,7 +408,7 @@
         }
 
         @media (max-height:700px) {
-           
+
 
             .login-container {
                 padding: 20px;
@@ -418,7 +425,6 @@
 <body>
     <!-- Header -->
     <header class="header">
-
         <div class="logo-section">
             <div class="logo"><img src="./images/Logo.svg" /></div>
             <div class="system-title">بنان لإدارة شركات ومكاتب تأجير السيارات</div>
