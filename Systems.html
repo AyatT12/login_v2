@@ -68,7 +68,7 @@
 
         .logo-section {
             display: flex;
-            align-items: center;
+            align-items: end;
             gap: 15px;
         }
 
@@ -116,7 +116,9 @@
             max-height: 100%;
             overflow: auto;
         }
-      
+        .systems-grid .col-md-4{
+             padding-bottom: 15px;
+        }
         .system-card {
             border-radius: 8px;
             background: rgba(254, 254, 254, 0.32);
@@ -260,7 +262,6 @@
                 display: flex;
                 justify-content: center;
             }
-
         }
 
         @media (max-width: 480px) {
@@ -293,14 +294,6 @@
             .up {
                 width: 100%;
                 top: 0px;
-            }
-
-        }
-
-         @media (min-width: 768px) {
-
-            .systems-grid .col-md-4 {
-              padding-bottom: 30px;
             }
 
         }
