@@ -39,7 +39,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 40px 10px;
+            padding: 10px 40px;
             position: relative;
             z-index: 10;
         }
@@ -90,7 +90,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px 20px 10px;
+            padding: 5px 20px 5px;
             position: relative;
             z-index: 5;
             min-height: 0;
@@ -152,6 +152,16 @@
             color: #999;
             font-size: 14px;
         }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px white inset !important;
+            box-shadow: 0 0 0 30px white inset !important;
+            -webkit-text-fill-color: #000 !important;
+        }
+
 
         /* Login button */
         .login-button {
@@ -269,6 +279,7 @@
             width: 75%;
             right: 25%;
             z-index: -1;
+            overflow: hidden;
         }
 
         .up {
@@ -277,7 +288,7 @@
             width: 50%;
             left: 0px;
             z-index: -1;
-
+            overflow: hidden;
         }
 
         .down {
@@ -286,14 +297,11 @@
             width: 77.4%;
             right: 0;
             z-index: -2;
+            overflow: hidden;
         }
 
         /* iPad specific fixes */
         @media (min-width: 768px) and (max-width: 1024px) {
-            .header {
-                padding: 8px 40px;
-            }
-
             .login-container {
                 padding: 25px 35px;
                 max-width: 400px;
@@ -302,10 +310,6 @@
             .login-title {
                 font-size: 24px;
                 margin-bottom: 20px;
-            }
-
-            .main-content {
-                padding: 15px 20px 10px;
             }
 
             .form-input {
@@ -320,9 +324,7 @@
         /* Responsive design */
         @media (max-width: 768px) {
             .header {
-                padding: 15px 20px;
                 flex-direction: column;
-                gap: 15px;
             }
 
             .header .language-selector {
@@ -359,9 +361,6 @@
         }
 
         @media (max-width: 480px) {
-            .main-content {
-                padding: 20px 10px;
-            }
 
             .login-container {
                 margin: 10px;
@@ -394,7 +393,7 @@
             }
 
             body {
-                background-image: url(../images/bg/bg.svg);
+                background-image: url(images/bg/bg.svg);
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center;
@@ -411,7 +410,7 @@
         }
 
         @media (max-height:700px) {
-           
+
 
             .login-container {
                 padding: 20px;
@@ -421,9 +420,6 @@
                 margin-bottom: 5px;
             }
 
-            .main-content {
-                padding: 0px 20px 5px;
-            }
         }
     </style>
 </head>
@@ -431,7 +427,6 @@
 <body>
     <!-- Header -->
     <header class="header">
-
         <div class="logo-section">
             <div class="logo"><img src="./images/Logo.svg" /></div>
             <div class="system-title">بنان لإدارة شركات ومكاتب تأجير السيارات</div>
