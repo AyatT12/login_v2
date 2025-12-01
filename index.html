@@ -22,16 +22,20 @@
             box-sizing: border-box;
         }
 
-        html, body {
+        html,
+        body {
             height: 100%;
             width: 100%;
             overflow-x: hidden;
+            /* Prevent address bar show/hide scroll */
+            overflow-y: hidden;
         }
 
         body {
             font-family: 'Cairo';
             background: var(--bg);
             min-height: 100vh;
+            min-height: -webkit-fill-available; /* For mobile browsers */
             display: flex;
             flex-direction: column;
             direction: rtl;
@@ -56,12 +60,15 @@
             font-weight: 500;
             gap: 8px;
             text-decoration: none;
+            width: 100%;
+            justify-content: flex-end;
         }
 
         .logo-section {
             display: flex;
             align-items: center;
             gap: 15px;
+            width: 100%;
         }
 
         .logo {
@@ -81,7 +88,7 @@
 
         /* Main content */
         .main-content {
-            flex: 1 0 auto;
+            flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -89,17 +96,32 @@
             padding: 20px;
             z-index: 5;
             width: 100%;
+            min-height: 0;
+            overflow-y: auto; /* Allow main content to scroll if needed */
         }
 
         /* Login container */
         .login-container {
             border-radius: 20px;
-            padding: 30px 40px;
+            padding: 30px;
             width: 100%;
             max-width: 450px;
             border: 2px solid var(--priamry_color);
-            background: rgba(255, 255, 255, 0.9);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            max-height: 80%;
+            background-color: var(--bg); /* Add background for better visibility */
+        }
+
+        /* Login form container */
+        .login-form-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            overflow-y: auto;
+            padding: 0px 10px;
         }
 
         .login-title {
@@ -109,6 +131,14 @@
             font-weight: 600;
             margin-bottom: 25px;
             position: relative;
+            flex-shrink: 0;
+        }
+
+        form {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
         }
 
         .form-label {
@@ -118,6 +148,7 @@
             font-weight: 500;
             margin-bottom: 8px;
             text-align: right;
+            flex-shrink: 0;
         }
 
         .form-input {
@@ -132,11 +163,22 @@
             outline: none;
             text-align: right;
             margin-bottom: 15px;
+            flex-shrink: 0;
         }
 
         .form-input:focus {
             border-color: var(--priamry_color);
             box-shadow: 0 0 0 3px rgba(255, 154, 86, 0.1);
+        }
+
+        .error_message_container {
+            min-height: 30px;
+            margin: 10px 0;
+            flex-shrink: 0;
+        }
+
+        .error_message {
+            color: var(--error);
         }
 
         .login-button {
@@ -155,6 +197,7 @@
             display: block;
             text-decoration: none;
             text-align: center;
+            flex-shrink: 0;
         }
 
         .login-button:hover {
@@ -162,14 +205,23 @@
             transform: translateY(-2px);
         }
 
-        .error_message_container {
-            min-height: 30px;
-            margin: 10px 0px;
+        /* Custom scrollbar for login container */
+        .login-form-wrapper::-webkit-scrollbar {
+            width: 2px;
         }
 
-        .error_message {
-            color: var(--error);
-            display: none;
+        .login-form-wrapper::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 20px;
+        }
+
+        .login-form-wrapper::-webkit-scrollbar-thumb {
+            background: var(--priamry_color);
+            border-radius: 4px;
+        }
+
+        .login-form-wrapper::-webkit-scrollbar-thumb:hover {
+            background: #7a7a7a;
         }
 
         /* Footer */
@@ -187,8 +239,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
             flex-wrap: wrap;
             gap: 15px;
         }
@@ -248,7 +298,6 @@
             top: 0;
             left: 0;
             width: 50%;
-            max-width: 400px;
         }
 
         .car {
@@ -256,7 +305,6 @@
             bottom: 0;
             left: 0;
             width: 70%;
-            max-width: 600px;
         }
 
         .down {
@@ -264,12 +312,6 @@
             bottom: 0;
             right: 0;
             width: 80%;
-            max-width: 500px;
-        }
-
-        /* JavaScript fallback for mobile browsers */
-        .ios-fix {
-            height: calc(100vh - env(safe-area-inset-bottom));
         }
 
         @media (max-width: 768px) {
@@ -286,27 +328,9 @@
             .logo {
                 height: 60px;
             }
-
+            
             .login-container {
-                padding: 25px;
-                margin: 10px;
-            }
-
-            .car {
-                width: 100%;
-                max-width: none;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
-
-            .Footer-company {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
+                max-height: 85vh; /* Use viewport height on mobile */
             }
         }
 
@@ -323,10 +347,36 @@
 
             .login-container {
                 padding: 20px;
+                max-height: 80vh; /* Adjust for smaller screens */
             }
 
             .login-title {
                 font-size: 24px;
+            }
+            
+            .footer {
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-height: 700px) {
+            .login-container {
+                max-height: 75vh; /* Reduce height on short screens */
+            }
+            
+            .login-title {
+                margin-bottom: 15px;
+                font-size: 24px;
+            }
+
+            .form-input {
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+
+            .login-button {
+                padding: 12px 16px;
+                font-size: 16px;
             }
         }
 
@@ -338,34 +388,75 @@
             .main-content {
                 padding: 10px 20px;
             }
+
+            .login-container {
+                padding: 15px 20px;
+                max-height: 70vh;
+            }
+            
+            .header {
+                padding: 5px 15px;
+            }
+            
+            .logo {
+                height: 50px;
+            }
         }
     </style>
 
     <script>
-        // Fix for iOS/iPad Safari 100vh issue
-        document.addEventListener('DOMContentLoaded', function() {
-            // First, set a CSS variable for the actual viewport height
-            function setVh() {
-                let vh = window.innerHeight * 0.01;
-                document.documentElement.style.setProperty('--vh', `${vh}px`);
+        // Universal fix for all mobile devices with viewport height issues
+        document.addEventListener('DOMContentLoaded', function () {
+            function setRealViewportHeight() {
+                // Get the actual inner height of the window
+                const vh = window.innerHeight * 0.01;
                 
-                // For body height
+                // Set CSS custom property for reliable viewport units
+                document.documentElement.style.setProperty('--real-vh', `${vh}px`);
+                
+                // Set body height to match window height
                 document.body.style.height = window.innerHeight + 'px';
+                
+                // Force a reflow to trigger proper rendering
+                void document.body.offsetHeight;
+                
+                console.log('Viewport height set to:', window.innerHeight + 'px');
             }
+
+            // Set initial height
+            setRealViewportHeight();
             
-            // Set initial value
-            setVh();
+            // Update on all relevant events
+            window.addEventListener('resize', setRealViewportHeight);
+            window.addEventListener('orientationchange', function() {
+                // Add a small delay for orientation changes
+                setTimeout(setRealViewportHeight, 100);
+            });
             
-            // Update on resize and orientation change
-            window.addEventListener('resize', setVh);
-            window.addEventListener('orientationchange', setVh);
+            // Fix for browsers that hide/show address bar
+            window.addEventListener('scroll', function() {
+                if (window.innerHeight !== document.body.clientHeight) {
+                    setTimeout(setRealViewportHeight, 300);
+                }
+            });
             
-            // Force a reflow to fix Safari rendering
-            setTimeout(() => {
-                document.body.style.display = 'none';
-                document.body.offsetHeight; // Trigger reflow
-                document.body.style.display = 'flex';
-            }, 100);
+            // Additional fix for when page becomes visible again
+            document.addEventListener('visibilitychange', function() {
+                if (!document.hidden) {
+                    setTimeout(setRealViewportHeight, 100);
+                }
+            });
+            
+            // Final check after everything loads
+            window.addEventListener('load', function() {
+                setTimeout(setRealViewportHeight, 500);
+            });
+            
+            // Apply CSS fallback for body height
+            document.body.style.minHeight = '100vh';
+            document.body.style.minHeight = '-webkit-fill-available';
+            document.body.style.minHeight = '-moz-available';
+            document.body.style.minHeight = 'fill-available';
         });
     </script>
 </head>
@@ -394,23 +485,25 @@
     <!-- Main -->
     <main class="main-content">
         <div class="login-container">
-            <h1 class="login-title">تسجيل الدخول</h1>
+            <div class="login-form-wrapper">
+                <h1 class="login-title">تسجيل الدخول</h1>
 
-            <form>
-                <label class="form-label">رقم الموظف</label>
-                <input class="form-input" type="text" placeholder="أدخل رقم الموظف">
+                <form>
+                    <label class="form-label">رقم الموظف</label>
+                    <input class="form-input" type="text">
 
-                <label class="form-label">كلمة المرور</label>
-                <input class="form-input" type="password" placeholder="أدخل كلمة المرور">
+                    <label class="form-label">كلمة المرور</label>
+                    <input class="form-input" type="password">
 
-                <div class="error_message_container">
-                    <p class="error_message">عفوا .... رقم الموظف أو كلمة السر غير صحيحة</p>
-                </div>
+                    <div class="error_message_container">
+                        <p class="error_message">عفوا .... رقم الموظف أو كلمة السر غير صحيحة</p>
+                    </div>
 
-                <a href="Systems.html" class="login-button">
-                    تسجيل الدخول
-                </a>
-            </form>
+                    <a href="Systems.html" class="login-button">
+                        تسجيل الدخول
+                    </a>
+                </form>
+            </div>
         </div>
     </main>
 
