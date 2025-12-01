@@ -115,8 +115,6 @@
             max-height: 80%;
             flex: 1;
             min-height: 0;
-            background-color: var(--bg);
-            /* Add background for better visibility */
         }
 
         /* Login form container */
@@ -400,61 +398,7 @@
         }
     </style>
 
-    <script>
-        // Universal fix for all mobile devices with viewport height issues
-        document.addEventListener('DOMContentLoaded', function () {
-            function setRealViewportHeight() {
-                // Get the actual inner height of the window
-                const vh = window.innerHeight * 0.01;
-
-                // Set CSS custom property for reliable viewport units
-                document.documentElement.style.setProperty('--real-vh', `${vh}px`);
-
-                // Set body height to match window height
-                document.body.style.height = window.innerHeight + 'px';
-
-                // Force a reflow to trigger proper rendering
-                void document.body.offsetHeight;
-
-                console.log('Viewport height set to:', window.innerHeight + 'px');
-            }
-
-            // Set initial height
-            setRealViewportHeight();
-
-            // Update on all relevant events
-            window.addEventListener('resize', setRealViewportHeight);
-            window.addEventListener('orientationchange', function () {
-                // Add a small delay for orientation changes
-                setTimeout(setRealViewportHeight, 100);
-            });
-
-            // Fix for browsers that hide/show address bar
-            window.addEventListener('scroll', function () {
-                if (window.innerHeight !== document.body.clientHeight) {
-                    setTimeout(setRealViewportHeight, 300);
-                }
-            });
-
-            // Additional fix for when page becomes visible again
-            document.addEventListener('visibilitychange', function () {
-                if (!document.hidden) {
-                    setTimeout(setRealViewportHeight, 100);
-                }
-            });
-
-            // Final check after everything loads
-            window.addEventListener('load', function () {
-                setTimeout(setRealViewportHeight, 500);
-            });
-
-            // Apply CSS fallback for body height
-            document.body.style.minHeight = '100vh';
-            document.body.style.minHeight = '-webkit-fill-available';
-            document.body.style.minHeight = '-moz-available';
-            document.body.style.minHeight = 'fill-available';
-        });
-    </script>
+   
 </head>
 
 <body>
@@ -526,3 +470,4 @@
 </body>
 
 </html>
+
