@@ -26,7 +26,8 @@
         body {
             font-family: 'Cairo';
             background: var(--bg);
-            min-height: 100dvh;
+            min-height: 100svh;
+            height: 100svh;
             display: flex;
             flex-direction: column;
             direction: rtl;
@@ -68,31 +69,35 @@
         }
 
         .navbar_options {
-               display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 25px;
-    width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 25px;
+            width: 100%;
         }
 
         /* Main Content */
         .main-content {
             flex: 1;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 10px 20px;
             min-height: 0;
+            max-height: calc(100svh - 110px);
         }
 
         .systems-grid {
+            flex: 1;
             display: flex;
             max-width: 1000px;
             width: 100%;
             align-items: center;
             padding: 10px;
-            max-height: calc(100dvh - 200px);
             overflow-y: auto;
+                max-height: 100%;
+
         }
 
         .system-card {
@@ -244,7 +249,7 @@
                     <img src="./images/global.svg" />
                 </div>
             </a>
-            <a class="logout" href="index.html">
+            <a class="logout" href="../Login/index.html">
                 <img src="./images/logout.svg" />
             </a>
         </div>
@@ -297,6 +302,5 @@
     </div>
 
 </body>
-
 
 </html>
