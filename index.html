@@ -78,6 +78,7 @@
         .main-content {
             flex: 1;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 10px 20px;
@@ -248,17 +249,7 @@
             width: 80%;
         }
 
-        @media (max-height: 550px) {
-            .main-content {
-                align-items: flex-start;
-                padding-top: 10px;
-            }
-
-            .login-container {
-                max-height: 60dvh;
-            }
-        }
-
+      
         @media (max-width: 768px) {
             .header {
                 flex-direction: column;
