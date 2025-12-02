@@ -35,7 +35,12 @@
             flex-direction: column;
             direction: rtl;
         }
-
+        .content-wrapper{
+            flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+        }
         /* Header */
         .header {
             display: flex;
@@ -92,7 +97,6 @@
             width: 100%;
             min-height: 0;
             overflow: hidden;
-            /* Allow main content to scroll if needed */
         }
 
         /* Login container */
@@ -230,6 +234,7 @@
             position: relative;
             z-index: 5;
             width: 100%;
+           
         }
 
         .footer-content {
@@ -280,7 +285,7 @@
 
         /* Background Vectors */
         .bg_vectors {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
@@ -395,7 +400,8 @@
 </head>
 
 <body>
-    <!-- Background Vectors -->
+  <div class="content-wrapper">
+  <!-- Background Vectors -->
     <div class="bg_vectors">
         <img src="./images/background/VectorUP.svg" class="up" alt="">
         <img src="./images/background/car.svg" class="car" alt="">
@@ -460,6 +466,7 @@
             </div>
         </div>
     </footer>
+  </div>
 </body>
 
 </html>
