@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>تسجيل الدخول - بنان</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="./images/BnanLogo.svg" />
@@ -24,23 +24,16 @@
 
         html,
         body {
-            height: 100%;
-            width: 100%;
-            overflow-x: hidden;
-            /* Prevent address bar show/hide scroll */
-            overflow-y: hidden;
+            min-height: 100dvh;
+            height: 100dvh;
         }
 
         body {
             font-family: 'Cairo';
             background: var(--bg);
-            min-height: 100vh;
-            min-height: -webkit-fill-available;
-            /* For mobile browsers */
             display: flex;
             flex-direction: column;
             direction: rtl;
-            position: relative;
         }
 
         /* Header */
@@ -98,7 +91,7 @@
             z-index: 5;
             width: 100%;
             min-height: 0;
-            overflow-y: auto;
+            overflow: hidden;
             /* Allow main content to scroll if needed */
         }
 
@@ -287,7 +280,7 @@
 
         /* Background Vectors */
         .bg_vectors {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
@@ -399,61 +392,6 @@
         }
     </style>
 
-    <script>
-        // Universal fix for all mobile devices with viewport height issues
-        document.addEventListener('DOMContentLoaded', function () {
-            function setRealViewportHeight() {
-                // Get the actual inner height of the window
-                const vh = window.innerHeight * 0.01;
-
-                // Set CSS custom property for reliable viewport units
-                document.documentElement.style.setProperty('--real-vh', `${vh}px`);
-
-                // Set body height to match window height
-                document.body.style.height = window.innerHeight + 'px';
-
-                // Force a reflow to trigger proper rendering
-                void document.body.offsetHeight;
-
-                console.log('Viewport height set to:', window.innerHeight + 'px');
-            }
-
-            // Set initial height
-            setRealViewportHeight();
-
-            // Update on all relevant events
-            window.addEventListener('resize', setRealViewportHeight);
-            window.addEventListener('orientationchange', function () {
-                // Add a small delay for orientation changes
-                setTimeout(setRealViewportHeight, 100);
-            });
-
-            // Fix for browsers that hide/show address bar
-            window.addEventListener('scroll', function () {
-                if (window.innerHeight !== document.body.clientHeight) {
-                    setTimeout(setRealViewportHeight, 300);
-                }
-            });
-
-            // Additional fix for when page becomes visible again
-            document.addEventListener('visibilitychange', function () {
-                if (!document.hidden) {
-                    setTimeout(setRealViewportHeight, 100);
-                }
-            });
-
-            // Final check after everything loads
-            window.addEventListener('load', function () {
-                setTimeout(setRealViewportHeight, 500);
-            });
-
-            // Apply CSS fallback for body height
-            document.body.style.minHeight = '100vh';
-            document.body.style.minHeight = '-webkit-fill-available';
-            document.body.style.minHeight = '-moz-available';
-            document.body.style.minHeight = 'fill-available';
-        });
-    </script>
 </head>
 
 <body>
