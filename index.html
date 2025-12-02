@@ -22,11 +22,6 @@
             box-sizing: border-box;
         }
 
-        html {
-            height: auto;
-        }
-
-
         body {
             font-family: 'Cairo';
             background: var(--bg);
@@ -35,7 +30,7 @@
             direction: rtl;
             min-height: 100dvh;
             height: 100dvh;
-
+            overflow: hidden;
         }
 
         .content-wrapper {
@@ -47,7 +42,6 @@
             overflow: hidden;
         }
 
-        /* Header */
         .header {
             display: flex;
             justify-content: space-between;
@@ -65,7 +59,6 @@
             font-weight: 500;
             gap: 8px;
             text-decoration: none;
-            width: 100%;
             justify-content: flex-end;
         }
 
@@ -91,20 +84,18 @@
             font-weight: 600;
         }
 
-        /* Main content */
         .main-content {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             padding: 20px;
             z-index: 5;
             width: 100%;
             min-height: 0;
-            overflow: hidden;
         }
 
-        /* Login container */
         .login-container {
             border-radius: 20px;
             padding: 30px;
@@ -114,12 +105,9 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
-            flex: 1;
             min-height: 0;
-            /* Add background for better visibility */
         }
 
-        /* Login form container */
         .login-form-wrapper {
             flex: 1;
             display: flex;
@@ -210,7 +198,6 @@
             transform: translateY(-2px);
         }
 
-        /* Custom scrollbar for login container */
         .login-form-wrapper::-webkit-scrollbar {
             width: 2px;
         }
@@ -229,7 +216,6 @@
             background: #7a7a7a;
         }
 
-        /* Footer */
         .footer {
             background: var(--secondary_color);
             color: white;
@@ -287,7 +273,6 @@
             gap: 15px;
         }
 
-        /* Background Vectors */
         .bg_vectors {
             position: absolute;
             top: 0;
@@ -405,14 +390,12 @@
 
 <body>
     <div class="content-wrapper">
-        <!-- Background Vectors -->
         <div class="bg_vectors">
             <img src="./images/background/VectorUP.svg" class="up" alt="">
             <img src="./images/background/car.svg" class="car" alt="">
             <img src="./images/background/VectorDown.svg" class="down" alt="">
         </div>
 
-        <!-- Header -->
         <header class="header">
             <div class="logo-section">
                 <div class="logo"><img src="./images/BnanLogo.svg" alt="بنان لوجو" /></div>
@@ -425,7 +408,6 @@
             </a>
         </header>
 
-        <!-- Main -->
         <main class="main-content">
             <div class="login-container">
                 <div class="login-form-wrapper">
@@ -450,7 +432,6 @@
             </div>
         </main>
 
-        <!-- Footer -->
         <footer class="footer">
             <div class="footer-content">
                 <div class="Footer-company">
